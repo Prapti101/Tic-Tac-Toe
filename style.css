@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 10px;
+    height: auto;
+    color: ghostwhite;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.game {
+    width: min(90vmin, 500px);
+    height: min(90vmin, 500px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vmin;
+    position: relative; 
+}
+
+.box {
+    flex: 1 1 calc(33.333% - 2vmin);
+    aspect-ratio: 1 / 1;
+    border-radius: 1.5vmin;
+    font-size: clamp(2rem, 8vmin, 4rem);
+    background-color: #f0f4f8;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.box.X {
+    color: #ff4b5c;
+}
+
+.box.O {
+    color: #009ffd;
+}
+
+/* Buttons */
+#reset-btn,
+#new-btn {
+    border-radius: 1rem;
+    font-size: clamp(0.9rem, 2.5vmin, 1.2rem);
+    background-image: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#reset-btn:hover,
+#new-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Winner message */
+.msg-container {
+    color: #38ef7d;
+    text-shadow: 0 0 10px #38ef7d;
+    font-size: clamp(1.5rem, 4vmin, 3rem);
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+/* Winner line */
+.line {
+    position: absolute;
+    height: 0.5vmin;
+    width: 100%;
+    max-width: 90%;
+    background-color: #38ef7d;
+    box-shadow: 0 0 10px #38ef7d;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 600px) {
+    .game {
+        gap: 3vmin;
+    }
+    .box {
+        border-radius: 1rem;
+        font-size: clamp(1.5rem, 10vmin, 3rem);
+    }
+    #reset-btn,
+    #new-btn {
+        width: 80%;
+        font-size: 1rem;
+    }
+}
